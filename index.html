@@ -2,11 +2,15 @@
 
 <html>
     <head>
+        <style>canvas{display:block}</style>
         <title>Echolocation</title>
 
         <script src="layout.js" defer></script>
         <script src="particles.js" defer></script>
         <script src="raycast.js" defer></script>
+        <script src="graph.js" defer></script>
+
+        <script src="microphones.js" defer></script>
 
         <script src="main.js" defer></script>
 
@@ -14,6 +18,11 @@
     </head>
 
     <body>
+        
         <canvas id="main-canvas"></canvas>
+        <div style="position:relative;bottom:512px;left:512px">
+            <canvas id="mic-canvas" width = 256></canvas>
+            <canvas id="mic-canvas2" width = 256></canvas>
+        </div>
     </body>
 </html>

@@ -41,7 +41,7 @@ const canvas = {
     }
 }
 
-lines.create(5)
+lines.create(2)
 
 c.addEventListener('mousedown', (e)=>{
     // console.log(e)
@@ -56,9 +56,28 @@ c.addEventListener('mousemove', (e)=>{
 // particles.createBurst(200, 200, 100)
 canvas.render()
 
+document.addEventListener('keydown', ()=>{// get peaks
+    console.log(Microphone.getDifferences(micgraph.data, micgraph2.data))
+    // micgraph.data.forEach((v,i)=>{if(v!=1){console.log(i)}})
+    // console.log(micgraph.data)
+})
+
+const micl = new Microphone(mx, my)
+const micr = new Microphone(mx, my)
+const micgraph = new Graph(document.getElementById('mic-canvas'))
+const micgraph2 = new Graph(document.getElementById('mic-canvas2'), true)
+
 const timer = setInterval(()=>{
     particles.iterate()
     canvas.render()
+    micl.x = mx - 20
+    micl.y = my
+    micr.x = mx + 20
+    micr.y = my
+    micl.display(ctx)
+    micr.display(ctx)
+    micgraph.plot(micl.check())
+    micgraph2.plot(micr.check())
 }, 30)
 
 // const timer2 = setInterval(()=>{
