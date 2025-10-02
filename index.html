@@ -2,13 +2,17 @@
 
 <html>
     <head>
-        <style>canvas{display:block}</style>
+        <style>
+            canvas{display:block}
+            td{margin:5px}
+        </style>
         <title>Echolocation</title>
 
         <script src="layout.js" defer></script>
         <script src="particles.js" defer></script>
         <script src="raycast.js" defer></script>
         <script src="graph.js" defer></script>
+        <script src="echolocation.js" defer></script>
 
         <script src="microphones.js" defer></script>
 
@@ -18,11 +22,25 @@
     </head>
 
     <body>
+        <table>
+            <tr>
+                <td>
+                    <p>Main screen (mouse is echolocator)</p>
+                    <canvas id="main-canvas"></canvas>
+                </td>
+                <td>
+                    <p>Microphone outputs (L/R)</p>
+                    <canvas id="mic-canvas" width = "256"></canvas>
+                    <canvas id="mic-canvas2" width = "256"></canvas>
+                </td>
+                <td>
+                    <p>Echolocator map</p>
+                    <canvas id="echo-canvas" width="512" height="512"></canvas>
+                </td>
+            </tr>
+        </table>
+
+        <p>click to ping. press S to start auto-pinging and any key to stop</p>
         
-        <canvas id="main-canvas"></canvas>
-        <div style="position:relative;bottom:512px;left:512px">
-            <canvas id="mic-canvas" width = 256></canvas>
-            <canvas id="mic-canvas2" width = 256></canvas>
-        </div>
     </body>
 </html>

@@ -3,7 +3,7 @@ class Graph {
         this.ele = ele
         this.ctx = ele.getContext('2d')
         this.draw = 0
-        this.drawWidth = 0.5
+        this.drawWidth = 1
         this.clear()
         this.flipped = flipped
 
@@ -14,6 +14,7 @@ class Graph {
         this.ctx.fillStyle="#000000"
         this.ctx.fillRect(0, 0, this.ele.width, this.ele.height)
         this.data = []
+        this.draw = 0
     }
 
     plot(value){
@@ -29,8 +30,11 @@ class Graph {
 
         this.data.push(value)
 
-        if(this.ele.width < this.draw){this.draw=0;this.clear()}
+        // if(this.ele.width < this.draw){this.draw=0;this.clear()} // no auto reset
+    }
 
+    isFull(){
+        return this.ele.width < this.draw
     }
 
     drawData(input){// draw array of values

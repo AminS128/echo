@@ -61,16 +61,5 @@ const particles = {
     iterate:function(){
         this.list.forEach((v)=>{v.iterate()})
     },
-    createBurst:function(x, y, amount){
-        let angle = Math.random()
-        for(var i = 0; i < amount ; i++){
-            this.list.push(new Particle(
-                x, 
-                y, 
-                5*Math.cos(angle), 
-                5*Math.sin(angle)
-            ))
-            angle+=6.28/amount
-        }
-    }
+    clear:function(){this.list = []}
 }

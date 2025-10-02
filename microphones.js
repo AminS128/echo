@@ -26,7 +26,6 @@ class Microphone {
         // returns list of list
         // each item: [delay, relative delay] where delay is delay from start and relative delay is delay between l and r (can be negative)
         
-        
         let pL = Graph.getPeaks(inputL)
         let pR = Graph.getPeaks(inputR)
         const maxDelay = 10 // nothing beyond this is as yet possible anyway
