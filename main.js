@@ -41,11 +41,15 @@ const canvas = {
     }
 }
 
-lines.create(1)
+lines.create(3)
 
 c.addEventListener('mousedown', (e)=>{
     // console.log(e)
     Echolocator.echolocate()
+
+    micgraph.clear()
+    micgraph2.clear()
+
 })
 let mx = 0
 let my = 0
@@ -59,25 +63,31 @@ canvas.render()
 
 Echolocator.clearVis()
 
-const micl = new Microphone(mx, my)
-const micr = new Microphone(mx, my)
+Echolocator.micL = new Microphone(mx, my)
+Echolocator.micR = new Microphone(mx, my)
 const micgraph = new Graph(document.getElementById('mic-canvas'))
 const micgraph2 = new Graph(document.getElementById('mic-canvas2'), true)
 
 const timer = setInterval(()=>{
     canvas.render()
-    micl.x = mx - Echolocator.micDistance/2
-    micl.y = my
-    micr.x = mx + Echolocator.micDistance/2
-    micr.y = my
-    micl.display(ctx)
-    micr.display(ctx)
+    Echolocator.micL.x = mx - Echolocator.micDistance/2
+    Echolocator.micL.y = my
+    Echolocator.micR.x = mx + Echolocator.micDistance/2
+    Echolocator.micR.y = my
+    Echolocator.x = mx
+    Echolocator.y = my
+    Echolocator.micR.display(ctx)
+    Echolocator.micL.display(ctx)
 }, 30)
 
 document.addEventListener('keydown', (e)=>{
     clearTimeout(Echolocator.timer)
     if(e.key == "s"){
         Echolocator.timer = setInterval(() => {
+
+            micgraph.clear()
+            micgraph2.clear()
+            
             Echolocator.echolocate()
             console.log('echolocate ping')
         }, 100)
