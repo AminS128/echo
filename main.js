@@ -44,11 +44,13 @@ const canvas = {
 lines.create(3)
 
 c.addEventListener('mousedown', (e)=>{
-    // console.log(e)
-    Echolocator.echolocate()
 
+    
     micgraph.clear()
     micgraph2.clear()
+
+    // console.log(e)
+    Echolocator.echolocate()
 
 })
 let mx = 0
